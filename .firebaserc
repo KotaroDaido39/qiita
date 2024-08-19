@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "fir-qiita"
+  },
+  "targets": {},
+  "etags": {
+    "fir-qiita": {
+      "extensionInstances": {}
+    }
+  },
+  "dataconnectEmulatorConfig": {}
+}

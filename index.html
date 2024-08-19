@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Function 呼び出し</title>
+</head>
+<body>
+    <h1>Firebase Function 呼び出し</h1>
+    <button id="callFunctionButton">関数を呼び出す</button>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('callFunctionButton').addEventListener('click', () => {
+            
+            const functionUrl = 'https://console.firebase.google.com/u/0/project/fir-qiita/functions.cloudfunctions.net/getRandomQiitaArticle';
+
+            fetch(functionUrl)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerText = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('result').innerText = 'エラーが発生しました。';
+                });
+        });
+    </script>
+</body>
+</html>
