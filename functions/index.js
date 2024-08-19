@@ -2,8 +2,8 @@ const functions = require("firebase-functions");
 const axios = require("axios");
 
 // SlackのWebhook URL
-const slackWebhookUrl = "https://hooks.slack.com/services/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";
-const MyToken = "7d07b6290bba556e6c9613e41fa820113a8ab477";
+const slackWebhookUrl = "----";
+const MyToken = "----";
 
 exports.postToSlack = functions.https.onRequest((req, res) => {
   axios.get("https://qiita.com/api/v2/items?query=title:初心者&created:>=2020-01-01&per_page=50", {
