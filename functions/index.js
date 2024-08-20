@@ -1,12 +1,13 @@
+const functions = require("firebase-functions");
 const axios = require("axios");
 
 // SlackのWebhook URL
 const slackWebhookUrl =
-  "https://hooks.slack.com/services/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";
-const MyToken = "7d07b6290bba556e6c9613e41fa820113a8ab477";
+  "-----SlackのWebhook URL-----";
+const MyToken = "----qiitaのアクセストークン----";
 
 // sendRandomArticleToSlack関数を定義
-exports.sendRandomArticleToSlack = async () => {
+exports.sendRandomArticleToSlack=functions.https.onRequest(async (req, res) => {
   try {
     console.log("Fetching articles from Qiita...");
     const response = await axios.get(
@@ -31,7 +32,7 @@ exports.sendRandomArticleToSlack = async () => {
 
     // Slackに投稿するメッセージを作成
     const slackMessage = {
-      text: "これで勉強するっちゃ！！",
+      text: "これで勉強してね",
       attachments: [
         {
           title: message.title,
@@ -48,12 +49,9 @@ exports.sendRandomArticleToSlack = async () => {
     await axios.post(slackWebhookUrl, slackMessage);
 
     console.log("Slackにメッセージを投稿しました。");
+    res.status(200).send("Slackにメッセージを投稿しました。");
   } catch (error) {
     console.error("Error posting to Slack:", error);
+    res.status(500).send("Error posting to Slack");
   }
-};
-
-
-// デバッグ用に関数を直接呼び出す
-exports.sendRandomArticleToSlack();
-
+});

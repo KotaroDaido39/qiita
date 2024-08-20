@@ -1,30 +1,73 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase Function 呼び出し</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(./qiita.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Firebase Function 呼び出し</h1>
-    <button id="callFunctionButton">関数を呼び出す</button>
+    <button id="callFunctionButton">Slackにおすすめ記事を投稿する</button>
     <p id="result"></p>
 
     <script>
         document.getElementById('callFunctionButton').addEventListener('click', () => {
-            
-            const functionUrl = 'https://us-central1-fir-qiita.cloudfunctions.net/runOnce';
+            const functionUrl = 'https://us-central1-fir-qiita.cloudfunctions.net/sendRandomArticleToSlack';
 
             fetch(functionUrl)
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('result').innerText = data;
+                    console.log('Success:', data);
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    document.getElementById('result').innerText = 'エラーが発生しました。';
                 });
         });
     </script>
 </body>
+
 </html>
