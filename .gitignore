@@ -68,4 +68,5 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 
-.txt
+# passwordkey.txtを無視
+passwordkey.txt
