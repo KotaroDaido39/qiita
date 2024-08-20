@@ -13,7 +13,7 @@
     <script>
         document.getElementById('callFunctionButton').addEventListener('click', () => {
             
-            const functionUrl = 'https://console.firebase.google.com/u/0/project/fir-qiita/functions.cloudfunctions.net/getRandomQiitaArticle';
+            const functionUrl = 'https://us-central1-fir-qiita.cloudfunctions.net/runOnce';
 
             fetch(functionUrl)
                 .then(response => response.text())
