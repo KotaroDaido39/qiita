@@ -3,7 +3,7 @@ const axios = require("axios");
 
 // SlackのWebhook URL
 const slackWebhookUrl =
-  "-----SlackのWebhook URL-----";
+  "-----SlackのWebhook URL----";
 const MyToken = "----qiitaのアクセストークン----";
 
 // sendRandomArticleToSlack関数を定義
